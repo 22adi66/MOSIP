@@ -13,20 +13,39 @@ https://deandra-creamiest-unpenetratingly.ngrok-free.dev
 3. **You should see the FastAPI documentation page**
 
 ### 🔧 **Important for Streamlit Code:**
-**Always add this header to your requests to skip ngrok browser warnings:**
+**Always add this header and specify content type correctly:**
 ```python
 headers = {"ngrok-skip-browser-warning": "true"}
 
-# Example:
-response = requests.post(
-    "https://deandra-creamiest-unpenetratingly.ngrok-free.dev/api/v1/ocr/extract",
-    files={"file": uploaded_file},
-    data=data,
-    headers=headers  # ← This is important!
-)
+# Example - CORRECT way to upload files:
+with open("image.jpg", "rb") as f:
+    files = {"file": ("image.jpg", f, "image/jpeg")}  # ← Specify content type!
+    data = {"confidence_threshold": 0.7}
+    
+    response = requests.post(
+        "https://deandra-creamiest-unpenetratingly.ngrok-free.dev/api/v1/ocr/extract",
+        files=files,
+        data=data,
+        headers=headers
+    )
+
+# For Streamlit file uploads:
+if uploaded_file:
+    files = {"file": (uploaded_file.name, uploaded_file.getvalue(), uploaded_file.type)}
+    # OR for safety:
+    files = {"file": (uploaded_file.name, uploaded_file.getvalue(), "image/jpeg")}
 ```
 
-### 📝 **Main Endpoints:**
+## ✅ **Working Endpoints (Tested):**
+
+1. **� GET /api/v1/health** - Returns: `{"status":"healthy","timestamp":"2025-09-29T..."}`
+2. **🌍 GET /api/v1/languages** - Returns: 12 supported languages including Hindi, Tamil, Telugu
+3. **✅ POST /api/v1/ocr/validate** - Text validation works perfectly
+4. **🔍 POST /api/v1/ocr/extract** - OCR extraction works perfectly (with proper file upload format)
+
+## ⚠️ **Note on Document Processing:**
+- The `/api/v1/document/process` endpoint is still being debugged
+- Use the `/api/v1/ocr/extract` endpoint instead - it works perfectly!
 1. **Extract Text**: `POST /api/v1/ocr/extract` 
 2. **Validate Text**: `POST /api/v1/ocr/validate`
 3. **Full Processing**: `POST /api/v1/document/process`
