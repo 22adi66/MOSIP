@@ -229,3 +229,10 @@
 2025-09-30 00:06:34 - mosip_ocr.engine - INFO - engine - extract_text:193 - Extracted 7 valid text regions above threshold 0.7
 2025-09-30 00:07:01 - mosip_ocr.engine - INFO - engine - extract_text:161 - Text extraction completed in 0.35 seconds, found 7 text regions
 2025-09-30 00:07:01 - mosip_ocr.engine - INFO - engine - extract_text:193 - Extracted 7 valid text regions above threshold 0.7
+2025-09-30 00:17:25 - mosip_ocr - INFO - logger - setup_logger:87 - Logger 'mosip_ocr' initialized with level INFO
+2025-09-30 00:17:46 - mosip_ocr - INFO - logger - setup_logger:87 - Logger 'mosip_ocr' initialized with level INFO
+2025-09-30 00:18:06 - mosip_ocr - INFO - logger - setup_logger:87 - Logger 'mosip_ocr' initialized with level INFO
+2025-09-30 00:18:21 - mosip_ocr - INFO - logger - setup_logger:87 - Logger 'mosip_ocr' initialized with level INFO
+2025-09-30 00:18:36 - mosip_ocr - INFO - logger - setup_logger:87 - Logger 'mosip_ocr' initialized with level INFO
+2025-09-30 00:18:51 - mosip_ocr - INFO - logger - setup_logger:87 - Logger 'mosip_ocr' initialized with level INFO
+2025-09-30 00:19:06 - mosip_ocr - INFO - logger - setup_logger:87 - Logger 'mosip_ocr' initialized with level INFO
