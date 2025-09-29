@@ -74,9 +74,16 @@ async def extract_text(
     start_time = time.time()
     
     try:
-        # Validate file type
-        if not file.content_type.startswith('image/'):
-            raise HTTPException(status_code=400, detail="File must be an image")
+        # Validate file type (handle None content_type from Streamlit)
+        content_type = file.content_type or ''
+        filename = file.filename or ''
+        
+        # Check content type or file extension
+        is_image = (content_type.startswith('image/') or 
+                   filename.lower().endswith(('.jpg', '.jpeg', '.png', '.tiff', '.tif', '.bmp')))
+        
+        if not is_image:
+            raise HTTPException(status_code=400, detail="File must be an image (JPG, PNG, TIFF, etc.)")
         
         # Create temporary file
         with tempfile.NamedTemporaryFile(delete=False, suffix='.jpg') as temp_file:
@@ -193,9 +200,16 @@ async def process_document(
     start_time = time.time()
     
     try:
-        # Validate file type
-        if not file.content_type.startswith('image/'):
-            raise HTTPException(status_code=400, detail="File must be an image")
+        # Validate file type (handle None content_type from Streamlit)
+        content_type = file.content_type or ''
+        filename = file.filename or ''
+        
+        # Check content type or file extension
+        is_image = (content_type.startswith('image/') or 
+                   filename.lower().endswith(('.jpg', '.jpeg', '.png', '.tiff', '.tif', '.bmp')))
+        
+        if not is_image:
+            raise HTTPException(status_code=400, detail="File must be an image (JPG, PNG, TIFF, etc.)")
         
         # Create temporary file
         with tempfile.NamedTemporaryFile(delete=False, suffix='.jpg') as temp_file:

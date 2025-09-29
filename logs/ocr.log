@@ -84,3 +84,19 @@
 2025-09-29 23:07:47 - mosip_ocr.engine - INFO - engine - extract_text:193 - Extracted 4 valid text regions above threshold 0.7
 2025-09-29 23:07:48 - mosip_ocr.engine - INFO - engine - extract_text:161 - Text extraction completed in 0.23 seconds, found 4 text regions
 2025-09-29 23:07:48 - mosip_ocr.engine - INFO - engine - extract_text:193 - Extracted 4 valid text regions above threshold 0.7
+2025-09-29 23:11:54 - mosip_ocr.engine - INFO - engine - extract_text:161 - Text extraction completed in 0.35 seconds, found 7 text regions
+2025-09-29 23:11:54 - mosip_ocr.engine - INFO - engine - extract_text:193 - Extracted 7 valid text regions above threshold 0.6
+2025-09-29 23:12:21 - mosip_ocr.engine - INFO - engine - extract_text:161 - Text extraction completed in 0.33 seconds, found 7 text regions
+2025-09-29 23:12:21 - mosip_ocr.engine - INFO - engine - extract_text:193 - Extracted 7 valid text regions above threshold 0.6
+2025-09-29 23:15:28 - mosip_ocr - INFO - logger - setup_logger:87 - Logger 'mosip_ocr' initialized with level INFO
+2025-09-29 23:16:24 - mosip_ocr - INFO - logger - setup_logger:87 - Logger 'mosip_ocr' initialized with level INFO
+2025-09-29 23:17:00 - mosip_ocr - INFO - logger - setup_logger:87 - Logger 'mosip_ocr' initialized with level INFO
+2025-09-29 23:17:33 - mosip_ocr.preprocessor - INFO - preprocessor - __init__:33 - ImagePreprocessor initialized with settings: contrast=True, denoise=True, resize_factor=2.0, auto_rotate=True
+2025-09-29 23:17:33 - mosip_ocr.engine - INFO - engine - _initialize_reader:95 - Initializing EasyOCR reader...
+2025-09-29 23:17:35 - mosip_ocr.engine - INFO - engine - _initialize_reader:111 - EasyOCR reader initialized successfully in 1.89 seconds
+2025-09-29 23:17:35 - mosip_ocr.engine - INFO - engine - __init__:89 - OCR Engine initialized with languages: ['en'], GPU: False, threshold: 0.8
+2025-09-29 23:17:38 - mosip_ocr.engine - INFO - engine - extract_text:161 - Text extraction completed in 3.42 seconds, found 7 text regions
+2025-09-29 23:17:38 - mosip_ocr.engine - INFO - engine - extract_text:193 - Extracted 7 valid text regions above threshold 0.7
+2025-09-29 23:17:39 - mosip_ocr.engine - INFO - engine - extract_text:161 - Text extraction completed in 0.33 seconds, found 7 text regions
+2025-09-29 23:17:39 - mosip_ocr.engine - INFO - engine - extract_text:193 - Extracted 7 valid text regions above threshold 0.7
+2025-09-29 23:17:39 - mosip_ocr.validator - INFO - validator - __init__:199 - TextValidator initialized with 2 rules
