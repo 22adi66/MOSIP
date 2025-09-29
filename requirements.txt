@@ -1,31 +1,26 @@
-# Core OCR Dependencies (CPU-only)
-easyocr>=1.7.0
-opencv-python-headless>=4.8.0  # Headless version without GUI dependencies
-Pillow>=9.0.0
+# Core OCR and Image Processing
+easyocr==1.7.2
+opencv-python-headless==4.12.0.86
+Pillow==11.3.0
 
 # API Framework
-fastapi>=0.100.0
-uvicorn>=0.20.0
+fastapi==0.118.0
+uvicorn[standard]==0.33.3
+python-multipart==0.0.20
 
-# Data Validation
-pydantic>=2.0.0
+# Data Processing and Validation
+pydantic==2.11.9
+numpy==2.2.6
 
-# Configuration Management
-pyyaml>=6.0
+# Web Interface
+streamlit==1.50.0
 
-# Logging and Utilities
-python-multipart>=0.0.6
-python-dotenv>=1.0.0
+# HTTP Requests
+requests==2.32.5
 
-# Development Dependencies
-pytest>=7.0.0
-pytest-asyncio>=0.20.0
-pytest-benchmark>=4.0.0
+# Development and Testing (Optional)
+pytest==8.3.4
+pytest-asyncio==0.25.0
 
-# Image processing utilities
-numpy>=1.21.0
-scipy>=1.7.0
-
-# Note: PyTorch will be installed automatically by EasyOCR as needed
-# If manual installation is required, use:
-# pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+# Logging and Configuration
+python-dotenv==1.0.1

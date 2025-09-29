@@ -16,6 +16,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 from ..ocr.engine import OCREngine
 from ..ocr.validator import TextValidator
+from ..ocr.field_extractor import SmartFieldExtractor
 from .models import OCRRequest, OCRResponse, ValidationRequest, ValidationResponse, DocumentProcessRequest
 from ..utils.logger import setup_logger
 
@@ -28,6 +29,7 @@ router = APIRouter()
 # Initialize OCR components (singleton pattern)
 ocr_engine = None
 text_validator = None
+field_extractor = None
 executor = ThreadPoolExecutor(max_workers=4)
 
 def get_ocr_engine():
@@ -45,6 +47,14 @@ def get_text_validator():
         text_validator = TextValidator()
         logger.info("Text Validator initialized for API")
     return text_validator
+
+def get_field_extractor():
+    """Get or create field extractor instance"""
+    global field_extractor
+    if field_extractor is None:
+        field_extractor = SmartFieldExtractor()
+        logger.info("Field Extractor initialized for API")
+    return field_extractor
 
 def process_image_sync(image_path: str, confidence_threshold: float = 0.7):
     """Synchronous image processing for async wrapper"""
@@ -344,3 +354,123 @@ async def api_health_check():
             "error": str(e),
             "timestamp": datetime.now().isoformat()
         }
+
+@router.get("/fields/available")
+async def get_available_fields():
+    """Get list of available predefined fields for extraction"""
+    try:
+        extractor = get_field_extractor()
+        fields = extractor.get_available_fields()
+        
+        return {
+            "status": "success",
+            "available_fields": fields,
+            "total_count": len(fields)
+        }
+        
+    except Exception as e:
+        logger.error(f"Failed to get available fields: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to get available fields")
+
+@router.post("/fields/extract")
+async def extract_custom_fields(
+    file: UploadFile = File(...),
+    fields: str = Form(...),  # JSON string of field definitions
+    confidence_threshold: Optional[float] = Form(0.7)
+):
+    """
+    Extract custom fields from uploaded document
+    
+    **Parameters:**
+    - **file**: Document image file
+    - **fields**: JSON array of field definitions [{"name": "Name", "keywords": ["name", "naam"], "required": true}]
+    - **confidence_threshold**: Minimum confidence score for OCR
+    
+    **Returns:**
+    - JSON with extracted field values and their locations
+    """
+    start_time = time.time()
+    
+    try:
+        # Validate file type (handle None content_type from Streamlit)
+        content_type = file.content_type or ''
+        filename = file.filename or ''
+        
+        # Check content type or file extension
+        is_image = (content_type.startswith('image/') or 
+                   filename.lower().endswith(('.jpg', '.jpeg', '.png', '.tiff', '.tif', '.bmp')))
+        
+        if not is_image:
+            raise HTTPException(status_code=400, detail="File must be an image (JPG, PNG, TIFF, etc.)")
+        
+        # Parse field definitions
+        try:
+            import json
+            field_definitions = json.loads(fields)
+        except json.JSONDecodeError:
+            raise HTTPException(status_code=400, detail="Invalid field definitions JSON")
+        
+        # Create temporary file
+        with tempfile.NamedTemporaryFile(delete=False, suffix='.jpg') as temp_file:
+            content = await file.read()
+            temp_file.write(content)
+            temp_path = temp_file.name
+        
+        try:
+            # Extract text first
+            loop = asyncio.get_event_loop()
+            ocr_results = await loop.run_in_executor(
+                executor, 
+                process_image_sync, 
+                temp_path, 
+                confidence_threshold
+            )
+            
+            # Convert OCR results to format expected by field extractor
+            text_blocks = []
+            for result in ocr_results:
+                text_blocks.append({
+                    "text": str(result.text),
+                    "confidence": float(result.confidence),
+                    "bbox": [[int(x) for x in point] for point in result.bbox],
+                    "language": str(result.language) if result.language else None
+                })
+            
+            # Extract fields
+            extractor = get_field_extractor()
+            extracted_fields = extractor.extract_fields(text_blocks, field_definitions)
+            
+            # Format response
+            processing_time = time.time() - start_time
+            
+            fields_result = []
+            for field in extracted_fields:
+                fields_result.append({
+                    "field_name": field.field_name,
+                    "value": field.value,
+                    "confidence": float(field.confidence),
+                    "source_text": field.source_text,
+                    "bbox": field.bbox
+                })
+            
+            response = {
+                "status": "success",
+                "processing_time": round(float(processing_time), 3),
+                "total_fields_requested": int(len(field_definitions)),
+                "fields_extracted": int(len(fields_result)),
+                "extracted_fields": fields_result,
+                "original_text_blocks": text_blocks,
+                "field_definitions": field_definitions
+            }
+            
+            logger.info(f"Field extraction completed: {len(fields_result)}/{len(field_definitions)} fields extracted")
+            return response
+            
+        finally:
+            # Clean up temporary file
+            if os.path.exists(temp_path):
+                os.unlink(temp_path)
+                
+    except Exception as e:
+        logger.error(f"Field extraction error: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Field extraction failed: {str(e)}")

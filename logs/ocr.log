@@ -100,3 +100,132 @@
 2025-09-29 23:17:39 - mosip_ocr.engine - INFO - engine - extract_text:161 - Text extraction completed in 0.33 seconds, found 7 text regions
 2025-09-29 23:17:39 - mosip_ocr.engine - INFO - engine - extract_text:193 - Extracted 7 valid text regions above threshold 0.7
 2025-09-29 23:17:39 - mosip_ocr.validator - INFO - validator - __init__:199 - TextValidator initialized with 2 rules
+2025-09-29 23:28:24 - mosip_ocr.engine - INFO - engine - extract_text:161 - Text extraction completed in 0.33 seconds, found 7 text regions
+2025-09-29 23:28:24 - mosip_ocr.engine - INFO - engine - extract_text:193 - Extracted 7 valid text regions above threshold 0.7
+2025-09-29 23:30:26 - mosip_ocr.engine - INFO - engine - extract_text:161 - Text extraction completed in 0.36 seconds, found 7 text regions
+2025-09-29 23:30:26 - mosip_ocr.engine - INFO - engine - extract_text:193 - Extracted 7 valid text regions above threshold 0.7
+2025-09-29 23:31:45 - mosip_ocr.engine - INFO - engine - extract_text:161 - Text extraction completed in 1.01 seconds, found 36 text regions
+2025-09-29 23:31:45 - mosip_ocr.engine - INFO - engine - extract_text:193 - Extracted 11 valid text regions above threshold 0.7
+2025-09-29 23:32:12 - mosip_ocr.engine - INFO - engine - extract_text:161 - Text extraction completed in 1.80 seconds, found 13 text regions
+2025-09-29 23:32:12 - mosip_ocr.engine - INFO - engine - extract_text:193 - Extracted 10 valid text regions above threshold 0.7
+2025-09-29 23:33:38 - mosip_ocr.engine - INFO - engine - extract_text:161 - Text extraction completed in 0.32 seconds, found 7 text regions
+2025-09-29 23:33:38 - mosip_ocr.engine - INFO - engine - extract_text:193 - Extracted 7 valid text regions above threshold 0.7
+2025-09-29 23:34:03 - mosip_ocr.engine - INFO - engine - extract_text:161 - Text extraction completed in 0.32 seconds, found 7 text regions
+2025-09-29 23:34:03 - mosip_ocr.engine - INFO - engine - extract_text:193 - Extracted 7 valid text regions above threshold 0.7
+2025-09-29 23:36:12 - mosip_ocr.engine - INFO - engine - extract_text:161 - Text extraction completed in 1.69 seconds, found 9 text regions
+2025-09-29 23:36:12 - mosip_ocr.engine - INFO - engine - extract_text:193 - Extracted 5 valid text regions above threshold 0.7
+2025-09-29 23:36:54 - mosip_ocr.engine - INFO - engine - extract_text:161 - Text extraction completed in 1.67 seconds, found 9 text regions
+2025-09-29 23:36:54 - mosip_ocr.engine - INFO - engine - extract_text:193 - Extracted 5 valid text regions above threshold 0.7
+2025-09-29 23:38:17 - mosip_ocr.engine - INFO - engine - extract_text:161 - Text extraction completed in 2.42 seconds, found 21 text regions
+2025-09-29 23:38:17 - mosip_ocr.engine - INFO - engine - extract_text:193 - Extracted 19 valid text regions above threshold 0.7
+2025-09-29 23:40:00 - mosip_ocr.engine - INFO - engine - extract_text:161 - Text extraction completed in 0.30 seconds, found 9 text regions
+2025-09-29 23:40:00 - mosip_ocr.engine - INFO - engine - extract_text:193 - Extracted 8 valid text regions above threshold 0.7
+2025-09-29 23:44:06 - mosip_ocr.engine - INFO - engine - extract_text:161 - Text extraction completed in 0.43 seconds, found 7 text regions
+2025-09-29 23:44:06 - mosip_ocr.engine - INFO - engine - extract_text:193 - Extracted 7 valid text regions above threshold 0.7
+2025-09-29 23:48:35 - mosip_ocr - INFO - logger - setup_logger:87 - Logger 'mosip_ocr' initialized with level INFO
+2025-09-29 23:49:15 - mosip_ocr.preprocessor - INFO - preprocessor - __init__:45 - ImagePreprocessor initialized with settings: contrast=True, denoise=True, resize_factor=2.0, auto_rotate=True, sharpening=True, binarization=True
+2025-09-29 23:49:15 - mosip_ocr.engine - INFO - engine - _initialize_reader:95 - Initializing EasyOCR reader...
+2025-09-29 23:49:17 - mosip_ocr.engine - INFO - engine - _initialize_reader:111 - EasyOCR reader initialized successfully in 1.88 seconds
+2025-09-29 23:49:17 - mosip_ocr.engine - INFO - engine - __init__:89 - OCR Engine initialized with languages: ['en'], GPU: False, threshold: 0.8
+2025-09-29 23:49:21 - mosip_ocr.engine - INFO - engine - _single_pass_extraction:338 - Extracted 7 valid text regions above threshold 0.7
+2025-09-29 23:49:21 - mosip_ocr.preprocessor - WARNING - preprocessor - _auto_rotate:175 - Auto-rotation failed, using original image: not enough values to unpack (expected 2, got 1)
+2025-09-29 23:49:22 - mosip_ocr.preprocessor - INFO - preprocessor - preprocess:104 - Advanced image preprocessing completed successfully
+2025-09-29 23:49:22 - mosip_ocr.preprocessor - INFO - preprocessor - __init__:45 - ImagePreprocessor initialized with settings: contrast=True, denoise=True, resize_factor=2.5, auto_rotate=True, sharpening=True, binarization=False
+2025-09-29 23:49:22 - mosip_ocr.preprocessor - WARNING - preprocessor - _auto_rotate:175 - Auto-rotation failed, using original image: not enough values to unpack (expected 2, got 1)
+2025-09-29 23:49:22 - mosip_ocr.preprocessor - INFO - preprocessor - preprocess:104 - Advanced image preprocessing completed successfully
+2025-09-29 23:49:22 - mosip_ocr.preprocessor - INFO - preprocessor - __init__:45 - ImagePreprocessor initialized with settings: contrast=False, denoise=True, resize_factor=2.0, auto_rotate=True, sharpening=False, binarization=True
+2025-09-29 23:49:22 - mosip_ocr.preprocessor - WARNING - preprocessor - _auto_rotate:175 - Auto-rotation failed, using original image: not enough values to unpack (expected 2, got 1)
+2025-09-29 23:49:22 - mosip_ocr.preprocessor - INFO - preprocessor - preprocess:104 - Advanced image preprocessing completed successfully
+2025-09-29 23:49:22 - mosip_ocr.preprocessor - WARNING - preprocessor - _auto_rotate:175 - Auto-rotation failed, using original image: not enough values to unpack (expected 2, got 1)
+2025-09-29 23:49:23 - mosip_ocr.preprocessor - INFO - preprocessor - preprocess:104 - Advanced image preprocessing completed successfully
+2025-09-29 23:49:27 - mosip_ocr.engine - INFO - engine - _single_pass_extraction:338 - Extracted 1 valid text regions above threshold 0.7
+2025-09-29 23:49:27 - mosip_ocr.preprocessor - WARNING - preprocessor - _auto_rotate:175 - Auto-rotation failed, using original image: not enough values to unpack (expected 2, got 1)
+2025-09-29 23:49:28 - mosip_ocr.preprocessor - INFO - preprocessor - preprocess:104 - Advanced image preprocessing completed successfully
+2025-09-29 23:49:35 - mosip_ocr.engine - INFO - engine - _single_pass_extraction:338 - Extracted 5 valid text regions above threshold 0.7
+2025-09-29 23:49:35 - mosip_ocr.preprocessor - WARNING - preprocessor - _auto_rotate:175 - Auto-rotation failed, using original image: not enough values to unpack (expected 2, got 1)
+2025-09-29 23:49:35 - mosip_ocr.preprocessor - INFO - preprocessor - preprocess:104 - Advanced image preprocessing completed successfully
+2025-09-29 23:49:39 - mosip_ocr.engine - INFO - engine - _single_pass_extraction:338 - Extracted 11 valid text regions above threshold 0.7
+2025-09-29 23:49:39 - mosip_ocr.engine - INFO - engine - _ensemble_extraction:222 - Ensemble extraction: 3 variants, 17 total results, 17 after merging
+2025-09-29 23:49:40 - mosip_ocr.preprocessor - WARNING - preprocessor - _auto_rotate:175 - Auto-rotation failed, using original image: not enough values to unpack (expected 2, got 1)
+2025-09-29 23:49:40 - mosip_ocr.preprocessor - INFO - preprocessor - preprocess:104 - Advanced image preprocessing completed successfully
+2025-09-29 23:49:40 - mosip_ocr.preprocessor - INFO - preprocessor - __init__:45 - ImagePreprocessor initialized with settings: contrast=True, denoise=True, resize_factor=2.5, auto_rotate=True, sharpening=True, binarization=False
+2025-09-29 23:49:40 - mosip_ocr.preprocessor - WARNING - preprocessor - _auto_rotate:175 - Auto-rotation failed, using original image: not enough values to unpack (expected 2, got 1)
+2025-09-29 23:49:41 - mosip_ocr.preprocessor - INFO - preprocessor - preprocess:104 - Advanced image preprocessing completed successfully
+2025-09-29 23:49:41 - mosip_ocr.preprocessor - INFO - preprocessor - __init__:45 - ImagePreprocessor initialized with settings: contrast=False, denoise=True, resize_factor=2.0, auto_rotate=True, sharpening=False, binarization=True
+2025-09-29 23:49:41 - mosip_ocr.preprocessor - WARNING - preprocessor - _auto_rotate:175 - Auto-rotation failed, using original image: not enough values to unpack (expected 2, got 1)
+2025-09-29 23:49:41 - mosip_ocr.preprocessor - INFO - preprocessor - preprocess:104 - Advanced image preprocessing completed successfully
+2025-09-29 23:49:42 - mosip_ocr.engine - WARNING - engine - _extract_with_params:294 - Parameter-specific extraction failed: not enough values to unpack (expected 3, got 2)
+2025-09-29 23:49:43 - mosip_ocr.engine - WARNING - engine - _extract_with_params:294 - Parameter-specific extraction failed: not enough values to unpack (expected 3, got 2)
+2025-09-29 23:49:44 - mosip_ocr.engine - WARNING - engine - _extract_with_params:294 - Parameter-specific extraction failed: not enough values to unpack (expected 3, got 2)
+2025-09-29 23:49:46 - mosip_ocr.engine - WARNING - engine - _extract_with_params:294 - Parameter-specific extraction failed: not enough values to unpack (expected 3, got 2)
+2025-09-29 23:49:48 - mosip_ocr.engine - WARNING - engine - _extract_with_params:294 - Parameter-specific extraction failed: not enough values to unpack (expected 3, got 2)
+2025-09-29 23:49:49 - mosip_ocr.engine - WARNING - engine - _extract_with_params:294 - Parameter-specific extraction failed: not enough values to unpack (expected 3, got 2)
+2025-09-29 23:49:50 - mosip_ocr.engine - WARNING - engine - _extract_with_params:294 - Parameter-specific extraction failed: not enough values to unpack (expected 3, got 2)
+2025-09-29 23:49:51 - mosip_ocr.engine - WARNING - engine - _extract_with_params:294 - Parameter-specific extraction failed: not enough values to unpack (expected 3, got 2)
+2025-09-29 23:49:52 - mosip_ocr.engine - WARNING - engine - _extract_with_params:294 - Parameter-specific extraction failed: not enough values to unpack (expected 3, got 2)
+2025-09-29 23:49:52 - mosip_ocr.engine - INFO - engine - _ensemble_extraction:222 - Ensemble extraction: 3 variants, 0 total results, 0 after merging
+2025-09-29 23:52:01 - mosip_ocr.preprocessor - WARNING - preprocessor - _auto_rotate:175 - Auto-rotation failed, using original image: not enough values to unpack (expected 2, got 1)
+2025-09-29 23:52:01 - mosip_ocr.preprocessor - INFO - preprocessor - preprocess:104 - Advanced image preprocessing completed successfully
+2025-09-29 23:52:01 - mosip_ocr.preprocessor - INFO - preprocessor - __init__:45 - ImagePreprocessor initialized with settings: contrast=True, denoise=True, resize_factor=2.5, auto_rotate=True, sharpening=True, binarization=False
+2025-09-29 23:52:01 - mosip_ocr.preprocessor - WARNING - preprocessor - _auto_rotate:175 - Auto-rotation failed, using original image: not enough values to unpack (expected 2, got 1)
+2025-09-29 23:52:01 - mosip_ocr.preprocessor - INFO - preprocessor - preprocess:104 - Advanced image preprocessing completed successfully
+2025-09-29 23:52:01 - mosip_ocr.preprocessor - INFO - preprocessor - __init__:45 - ImagePreprocessor initialized with settings: contrast=False, denoise=True, resize_factor=2.0, auto_rotate=True, sharpening=False, binarization=True
+2025-09-29 23:52:01 - mosip_ocr.preprocessor - WARNING - preprocessor - _auto_rotate:175 - Auto-rotation failed, using original image: not enough values to unpack (expected 2, got 1)
+2025-09-29 23:52:01 - mosip_ocr.preprocessor - INFO - preprocessor - preprocess:104 - Advanced image preprocessing completed successfully
+2025-09-29 23:52:02 - mosip_ocr.engine - WARNING - engine - _extract_with_params:294 - Parameter-specific extraction failed: not enough values to unpack (expected 3, got 2)
+2025-09-29 23:52:03 - mosip_ocr.engine - WARNING - engine - _extract_with_params:294 - Parameter-specific extraction failed: not enough values to unpack (expected 3, got 2)
+2025-09-29 23:52:04 - mosip_ocr.engine - WARNING - engine - _extract_with_params:294 - Parameter-specific extraction failed: not enough values to unpack (expected 3, got 2)
+2025-09-29 23:52:06 - mosip_ocr.engine - WARNING - engine - _extract_with_params:294 - Parameter-specific extraction failed: not enough values to unpack (expected 3, got 2)
+2025-09-29 23:52:08 - mosip_ocr.engine - WARNING - engine - _extract_with_params:294 - Parameter-specific extraction failed: not enough values to unpack (expected 3, got 2)
+2025-09-29 23:52:09 - mosip_ocr.engine - WARNING - engine - _extract_with_params:294 - Parameter-specific extraction failed: not enough values to unpack (expected 3, got 2)
+2025-09-29 23:52:10 - mosip_ocr.engine - WARNING - engine - _extract_with_params:294 - Parameter-specific extraction failed: not enough values to unpack (expected 3, got 2)
+2025-09-29 23:52:11 - mosip_ocr.engine - WARNING - engine - _extract_with_params:294 - Parameter-specific extraction failed: not enough values to unpack (expected 3, got 2)
+2025-09-29 23:52:12 - mosip_ocr.engine - WARNING - engine - _extract_with_params:294 - Parameter-specific extraction failed: not enough values to unpack (expected 3, got 2)
+2025-09-29 23:52:12 - mosip_ocr.engine - INFO - engine - _ensemble_extraction:222 - Ensemble extraction: 3 variants, 0 total results, 0 after merging
+2025-09-29 23:52:27 - mosip_ocr.engine - INFO - engine - _single_pass_extraction:338 - Extracted 7 valid text regions above threshold 0.7
+2025-09-29 23:52:36 - mosip_ocr.preprocessor - WARNING - preprocessor - _auto_rotate:175 - Auto-rotation failed, using original image: not enough values to unpack (expected 2, got 1)
+2025-09-29 23:52:36 - mosip_ocr.preprocessor - INFO - preprocessor - preprocess:104 - Advanced image preprocessing completed successfully
+2025-09-29 23:52:36 - mosip_ocr.preprocessor - INFO - preprocessor - __init__:45 - ImagePreprocessor initialized with settings: contrast=True, denoise=True, resize_factor=2.5, auto_rotate=True, sharpening=True, binarization=False
+2025-09-29 23:52:36 - mosip_ocr.preprocessor - WARNING - preprocessor - _auto_rotate:175 - Auto-rotation failed, using original image: not enough values to unpack (expected 2, got 1)
+2025-09-29 23:52:36 - mosip_ocr.preprocessor - INFO - preprocessor - preprocess:104 - Advanced image preprocessing completed successfully
+2025-09-29 23:52:36 - mosip_ocr.preprocessor - INFO - preprocessor - __init__:45 - ImagePreprocessor initialized with settings: contrast=False, denoise=True, resize_factor=2.0, auto_rotate=True, sharpening=False, binarization=True
+2025-09-29 23:52:36 - mosip_ocr.preprocessor - WARNING - preprocessor - _auto_rotate:175 - Auto-rotation failed, using original image: not enough values to unpack (expected 2, got 1)
+2025-09-29 23:52:37 - mosip_ocr.preprocessor - INFO - preprocessor - preprocess:104 - Advanced image preprocessing completed successfully
+2025-09-29 23:52:37 - mosip_ocr.preprocessor - WARNING - preprocessor - _auto_rotate:175 - Auto-rotation failed, using original image: not enough values to unpack (expected 2, got 1)
+2025-09-29 23:52:37 - mosip_ocr.preprocessor - INFO - preprocessor - preprocess:104 - Advanced image preprocessing completed successfully
+2025-09-29 23:52:41 - mosip_ocr.engine - INFO - engine - _single_pass_extraction:338 - Extracted 1 valid text regions above threshold 0.7
+2025-09-29 23:52:41 - mosip_ocr.preprocessor - WARNING - preprocessor - _auto_rotate:175 - Auto-rotation failed, using original image: not enough values to unpack (expected 2, got 1)
+2025-09-29 23:52:42 - mosip_ocr.preprocessor - INFO - preprocessor - preprocess:104 - Advanced image preprocessing completed successfully
+2025-09-29 23:52:48 - mosip_ocr.engine - INFO - engine - _single_pass_extraction:338 - Extracted 5 valid text regions above threshold 0.7
+2025-09-29 23:52:48 - mosip_ocr.preprocessor - WARNING - preprocessor - _auto_rotate:175 - Auto-rotation failed, using original image: not enough values to unpack (expected 2, got 1)
+2025-09-29 23:52:48 - mosip_ocr.preprocessor - INFO - preprocessor - preprocess:104 - Advanced image preprocessing completed successfully
+2025-09-29 23:52:52 - mosip_ocr.engine - INFO - engine - _single_pass_extraction:338 - Extracted 11 valid text regions above threshold 0.7
+2025-09-29 23:52:52 - mosip_ocr.engine - INFO - engine - _ensemble_extraction:222 - Ensemble extraction: 3 variants, 17 total results, 17 after merging
+2025-09-29 23:56:06 - mosip_ocr.engine - INFO - engine - _single_pass_extraction:338 - Extracted 0 valid text regions above threshold 0.7
+2025-09-29 23:56:56 - mosip_ocr.engine - INFO - engine - _single_pass_extraction:338 - Extracted 0 valid text regions above threshold 0.7
+2025-09-29 23:59:49 - mosip_ocr - INFO - logger - setup_logger:87 - Logger 'mosip_ocr' initialized with level INFO
+2025-09-30 00:00:01 - mosip_ocr - INFO - logger - setup_logger:87 - Logger 'mosip_ocr' initialized with level INFO
+2025-09-30 00:00:37 - mosip_ocr - INFO - logger - setup_logger:87 - Logger 'mosip_ocr' initialized with level INFO
+2025-09-30 00:01:35 - mosip_ocr - INFO - logger - setup_logger:87 - Logger 'mosip_ocr' initialized with level INFO
+2025-09-30 00:02:27 - mosip_ocr - INFO - logger - setup_logger:87 - Logger 'mosip_ocr' initialized with level INFO
+2025-09-30 00:03:57 - mosip_ocr.preprocessor - INFO - preprocessor - __init__:33 - ImagePreprocessor initialized with settings: contrast=True, denoise=True, resize_factor=2.0, auto_rotate=True
+2025-09-30 00:03:57 - mosip_ocr.engine - INFO - engine - _initialize_reader:95 - Initializing EasyOCR reader...
+2025-09-30 00:03:59 - mosip_ocr.engine - INFO - engine - _initialize_reader:111 - EasyOCR reader initialized successfully in 1.92 seconds
+2025-09-30 00:03:59 - mosip_ocr.engine - INFO - engine - __init__:89 - OCR Engine initialized with languages: ['en'], GPU: False, threshold: 0.8
+2025-09-30 00:04:02 - mosip_ocr.engine - INFO - engine - extract_text:161 - Text extraction completed in 3.41 seconds, found 7 text regions
+2025-09-30 00:04:02 - mosip_ocr.engine - INFO - engine - extract_text:193 - Extracted 7 valid text regions above threshold 0.7
+2025-09-30 00:04:11 - mosip_ocr.validator - INFO - validator - __init__:199 - TextValidator initialized with 2 rules
+2025-09-30 00:04:39 - mosip_ocr.engine - INFO - engine - extract_text:161 - Text extraction completed in 0.35 seconds, found 7 text regions
+2025-09-30 00:04:39 - mosip_ocr.engine - INFO - engine - extract_text:193 - Extracted 7 valid text regions above threshold 0.7
+2025-09-30 00:05:11 - mosip_ocr.engine - INFO - engine - extract_text:161 - Text extraction completed in 0.35 seconds, found 7 text regions
+2025-09-30 00:05:11 - mosip_ocr.engine - INFO - engine - extract_text:193 - Extracted 7 valid text regions above threshold 0.7
+2025-09-30 00:05:27 - mosip_ocr.engine - INFO - engine - extract_text:161 - Text extraction completed in 0.35 seconds, found 7 text regions
+2025-09-30 00:05:27 - mosip_ocr.engine - INFO - engine - extract_text:193 - Extracted 7 valid text regions above threshold 0.7
+2025-09-30 00:05:37 - mosip_ocr.engine - INFO - engine - extract_text:161 - Text extraction completed in 0.34 seconds, found 7 text regions
+2025-09-30 00:05:37 - mosip_ocr.engine - INFO - engine - extract_text:193 - Extracted 7 valid text regions above threshold 0.7
+2025-09-30 00:06:01 - mosip_ocr.engine - INFO - engine - extract_text:161 - Text extraction completed in 0.35 seconds, found 7 text regions
+2025-09-30 00:06:01 - mosip_ocr.engine - INFO - engine - extract_text:193 - Extracted 7 valid text regions above threshold 0.7
+2025-09-30 00:06:34 - mosip_ocr.engine - INFO - engine - extract_text:161 - Text extraction completed in 0.35 seconds, found 7 text regions
+2025-09-30 00:06:34 - mosip_ocr.engine - INFO - engine - extract_text:193 - Extracted 7 valid text regions above threshold 0.7
+2025-09-30 00:07:01 - mosip_ocr.engine - INFO - engine - extract_text:161 - Text extraction completed in 0.35 seconds, found 7 text regions
+2025-09-30 00:07:01 - mosip_ocr.engine - INFO - engine - extract_text:193 - Extracted 7 valid text regions above threshold 0.7

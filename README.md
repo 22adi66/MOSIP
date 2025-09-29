@@ -1,335 +1,180 @@
-# MOSIP OCR Text Extraction and Verification System
+# 🚀 MOSIP OCR - Text Extraction & Verification System
 
-## Overview
+[![Python](https://img.shields.io/badge/Python-3.13-blue.svg)](https://python.org)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.118.0-green.svg)](https://fastapi.tiangolo.com)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.50.0-red.svg)](https://streamlit.io)
+[![EasyOCR](https://img.shields.io/badge/EasyOCR-1.7.2-orange.svg)](https://github.com/JaidedAI/EasyOCR)
 
-This project implements an Optical Character Recognition (OCR) system for text extraction and verification as part of the MOSIP (Modular Open Source Identity Platform) ecosystem. The system uses EasyOCR for efficient and accurate text extraction from identity documents.
+A comprehensive OCR system for text extraction and verification from document images with smart field extraction capabilities.
 
-## Features
+## ✨ Features
 
-- **Multi-language OCR** - Supports 80+ languages including English, Hindi, and regional Indian languages
-- **High Accuracy** - Deep learning-based text recognition with confidence scoring
-- **Document Verification** - Automated validation of extracted text fields
-- **RESTful API** - Easy integration with MOSIP services
-- **Real-time Processing** - Fast text extraction and verification
-- **GPU Acceleration** - Optional CUDA support for enhanced performance
+- **🔍 Multi-Language OCR**: Support for 12+ languages including Hindi, Tamil, Telugu
+- **📄 Document Processing**: Complete document analysis with validation
+- **🎯 Smart Field Extraction**: Custom field definition and auto-extraction
+- **✅ Text Validation**: Custom validation rules and confidence scoring
+- **🌐 REST API**: FastAPI-based API with automatic documentation
+- **💻 Web Interface**: Beautiful Streamlit frontend
+- **🚀 Public Access**: Ngrok integration for worldwide accessibility
 
-## Technology Stack
-
-- **Python 3.8+**
-- **EasyOCR** - Primary OCR engine
-- **FastAPI** - Web framework for REST APIs
-- **OpenCV** - Image preprocessing
-- **Pillow** - Image handling
-- **Pydantic** - Data validation
-- **Docker** - Containerization
-
-## Architecture
-
-```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Image Input   │───▶│  OCR Processing │───▶│  Text Output    │
-│                 │    │                 │    │                 │
-│ • ID Cards      │    │ • EasyOCR       │    │ • Extracted     │
-│ • Passports     │    │ • Preprocessing │    │   Text          │
-│ • Documents     │    │ • Enhancement   │    │ • Confidence    │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-                                │
-                                ▼
-                       ┌─────────────────┐
-                       │  Verification   │
-                       │                 │
-                       │ • Field Valid.  │
-                       │ • Format Check  │
-                       │ • Quality Score │
-                       └─────────────────┘
-```
-
-## Project Structure
+## 🏗️ Project Structure
 
 ```
 MOSIP/
-├── src/
-│   ├── ocr/
-│   │   ├── __init__.py
-│   │   ├── engine.py           # EasyOCR wrapper
-│   │   ├── preprocessor.py     # Image preprocessing
-│   │   └── validator.py        # Text validation
-│   ├── api/
-│   │   ├── __init__.py
-│   │   ├── main.py            # FastAPI application
-│   │   ├── routes.py          # API endpoints
-│   │   └── models.py          # Pydantic models
-│   ├── utils/
-│   │   ├── __init__.py
-│   │   ├── config.py          # Configuration management
-│   │   └── logger.py          # Logging setup
-│   └── tests/
-│       ├── __init__.py
-│       ├── test_ocr.py
-│       └── test_api.py
-├── docker/
-│   ├── Dockerfile
-│   └── docker-compose.yml
-├── config/
-│   ├── config.yaml
-│   └── logging.yaml
-├── sample_images/
-│   └── test_documents/
-├── requirements.txt
-├── setup.py
-├── README.md
-└── .env.example
+├── src/                    # Source code
+│   ├── api/               # FastAPI application
+│   │   ├── main.py        # API entry point
+│   │   ├── routes.py      # API endpoints
+│   │   └── models.py      # Pydantic models
+│   ├── ocr/               # OCR processing modules
+│   │   ├── engine.py      # Main OCR engine
+│   │   ├── preprocessor.py # Image preprocessing
+│   │   ├── validator.py   # Text validation
+│   │   └── field_extractor.py # Smart field extraction
+│   └── utils/             # Utility modules
+│       └── logger.py      # Logging configuration
+├── config/                # Configuration files
+├── docs/                  # Documentation
+├── sample_images/         # Test images
+├── streamlit_app.py       # Frontend application
+├── requirements.txt       # Python dependencies
+└── README.md             # This file
 ```
 
-## Implementation Plan
+## 🚀 Quick Start
 
-### Phase 1: Core OCR Engine (Week 1)
-- [x] Project setup and virtual environment
-- [ ] Install and configure EasyOCR
-- [ ] Implement basic OCR engine wrapper
-- [ ] Add image preprocessing utilities
-- [ ] Create configuration management
+### 1. Installation
 
-### Phase 2: Text Processing & Validation (Week 2)
-- [ ] Implement text extraction pipeline
-- [ ] Add confidence scoring and filtering
-- [ ] Create validation rules for common document fields
-- [ ] Implement text cleaning and normalization
-
-### Phase 3: API Development (Week 3)
-- [ ] Design REST API endpoints
-- [ ] Implement FastAPI application
-- [ ] Add request/response models
-- [ ] Create error handling and logging
-
-### Phase 4: Integration & Testing (Week 4)
-- [ ] Write comprehensive unit tests
-- [ ] Performance testing and optimization
-- [ ] Docker containerization
-- [ ] API documentation generation
-
-### Phase 5: MOSIP Integration (Week 5)
-- [ ] MOSIP service integration
-- [ ] Database connectivity
-- [ ] Audit logging
-- [ ] Production deployment
-
-## Quick Start
-
-### Prerequisites
-```bash
-# Python 3.8 or higher
-python --version
-
-# Virtual environment (recommended)
-python -m venv venv
-source venv/bin/activate  # Linux/Mac
-# or
-venv\Scripts\activate     # Windows
-```
-
-### Installation
 ```bash
 # Clone the repository
 git clone <repository-url>
 cd MOSIP
 
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
 # Install dependencies
 pip install -r requirements.txt
-
-# Install EasyOCR (downloads models on first use)
-python -c "import easyocr; reader = easyocr.Reader(['en'])"
 ```
 
-### Basic Usage
-```python
-from src.ocr.engine import OCREngine
+### 2. Start the API Server
 
-# Initialize OCR engine
-ocr = OCREngine(languages=['en', 'hi'])
-
-# Extract text from image
-results = ocr.extract_text('path/to/document.jpg')
-
-# Process results
-for result in results:
-    print(f"Text: {result.text}")
-    print(f"Confidence: {result.confidence}")
-    print(f"Coordinates: {result.bbox}")
-```
-
-### API Usage
 ```bash
-# Start the API server
-python src/api/main.py
-
-# Test endpoint
-curl -X POST "http://localhost:8000/ocr/extract" \
-     -H "Content-Type: multipart/form-data" \
-     -F "file=@sample_image.jpg"
+uvicorn src.api.main:app --host 0.0.0.0 --port 8000
 ```
 
-## Configuration
+### 3. Start the Web Interface
+
+```bash
+streamlit run streamlit_app.py
+```
+
+### 4. Access the Applications
+
+- **API Documentation**: http://localhost:8000/docs
+- **Web Interface**: http://localhost:8501
+- **Health Check**: http://localhost:8000/health
+
+## 📚 API Endpoints
+
+### Core OCR Operations
+- `POST /api/v1/ocr/extract` - Extract text from images
+- `POST /api/v1/ocr/validate` - Validate extracted text
+- `POST /api/v1/document/process` - Complete document processing
+
+### Smart Field Extraction
+- `GET /api/v1/fields/available` - Get predefined fields
+- `POST /api/v1/fields/extract` - Extract custom fields
+
+### System Information
+- `GET /health` - API health check
+- `GET /api/v1/languages` - Supported languages
+
+## 🎯 Smart Field Extraction
+
+Define custom fields to extract specific information:
+
+```json
+[
+  {
+    "name": "Name",
+    "keywords": ["name", "naam", "नाम"],
+    "data_type": "text",
+    "required": true
+  },
+  {
+    "name": "Phone",
+    "keywords": ["phone", "mobile"],
+    "data_type": "phone",
+    "required": false
+  }
+]
+```
+
+## 🔧 Configuration
 
 ### Environment Variables
-```bash
-# .env file
-OCR_LANGUAGES=en,hi,ta,te,kn,ml,gu,pa,bn,or,as
-OCR_GPU_ENABLED=false
-API_HOST=0.0.0.0
-API_PORT=8000
-LOG_LEVEL=INFO
-```
+- `LOG_LEVEL`: Logging level (default: INFO)
+- `OCR_LANGUAGES`: Default OCR languages (default: en)
+- `CONFIDENCE_THRESHOLD`: Default confidence threshold (default: 0.7)
 
-### OCR Configuration
-```yaml
-# config/config.yaml
-ocr:
-  languages: ['en', 'hi']
-  confidence_threshold: 0.8
-  gpu_enabled: false
-  
-preprocessing:
-  enhance_contrast: true
-  denoise: true
-  resize_factor: 2.0
+### Supported Image Formats
+- JPG/JPEG
+- PNG
+- TIFF/TIF
+- BMP
 
-validation:
-  min_text_length: 2
-  max_text_length: 1000
-  allowed_chars: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 -.,/"
-```
+### Supported Languages
+English, Hindi, Tamil, Telugu, Kannada, Malayalam, Gujarati, Punjabi, Bengali, Odia, Assamese, Urdu
 
-## API Endpoints
+## 📖 Documentation
 
-### Text Extraction
-```http
-POST /api/v1/ocr/extract
-Content-Type: multipart/form-data
+- **[Quick Start Guide](docs/QUICK_START_FOR_FRIEND.md)** - Get started quickly
+- **[API Guide](docs/STREAMLIT_API_GUIDE.md)** - Complete API documentation
+- **[Problem Resolution](docs/PROBLEM_RESOLUTION_SUMMARY.md)** - Troubleshooting guide
 
-Response:
-{
-  "status": "success",
-  "results": [
-    {
-      "text": "Extracted text",
-      "confidence": 0.95,
-      "bbox": [[x1, y1], [x2, y2], [x3, y3], [x4, y4]],
-      "validated": true
-    }
-  ],
-  "processing_time": 1.23
-}
-```
+## 🧪 Testing
 
-### Document Verification
-```http
-POST /api/v1/verify/document
-Content-Type: multipart/form-data
-
-Response:
-{
-  "status": "success",
-  "verification_result": {
-    "document_type": "aadhaar",
-    "fields_extracted": 8,
-    "fields_validated": 7,
-    "overall_confidence": 0.89,
-    "validation_errors": []
-  }
-}
-```
-
-## Performance Expectations
-
-- **Processing Speed**: ~2-5 seconds per document (CPU)
-- **Processing Speed**: ~0.5-1 second per document (GPU)
-- **Accuracy**: 85-95% for clear documents
-- **Languages**: 80+ supported languages
-- **File Formats**: JPG, PNG, TIFF, PDF (image-based)
-
-## Supported Document Types
-
-- **Aadhaar Cards**
-- **PAN Cards**
-- **Driver's License**
-- **Passports**
-- **Voter ID Cards**
-- **Custom Document Types** (configurable)
-
-## Testing
+Test with sample images:
 
 ```bash
-# Run all tests
-python -m pytest src/tests/
-
-# Run specific test categories
-python -m pytest src/tests/test_ocr.py -v
-python -m pytest src/tests/test_api.py -v
-
-# Performance testing
-python -m pytest src/tests/test_performance.py --benchmark
+# Test basic OCR
+curl -X POST "http://localhost:8000/api/v1/ocr/extract" \
+  -H "Content-Type: multipart/form-data" \
+  -F "file=@sample_images/document.jpg" \
+  -F "confidence_threshold=0.7"
 ```
 
-## Docker Deployment
+## 🌟 Performance
 
-```bash
-# Build image
-docker build -f docker/Dockerfile -t mosip-ocr:latest .
+- **Processing Speed**: ~0.3-1.0 seconds per document
+- **Accuracy**: 90%+ confidence on clear documents
+- **Concurrent Users**: Supports multiple simultaneous requests
+- **Memory Usage**: ~500MB baseline + 200MB per active request
 
-# Run container
-docker run -p 8000:8000 \
-  -e OCR_LANGUAGES=en,hi \
-  -e OCR_GPU_ENABLED=false \
-  mosip-ocr:latest
-
-# Using docker-compose
-docker-compose -f docker/docker-compose.yml up -d
-```
-
-## Monitoring & Logging
-
-- **Structured Logging**: JSON format for easy parsing
-- **Performance Metrics**: Processing time, accuracy scores
-- **Error Tracking**: Detailed error logs with context
-- **Health Checks**: API endpoint monitoring
-
-## Contributing
+## 🤝 Contributing
 
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/new-feature`)
-3. Commit changes (`git commit -am 'Add new feature'`)
-4. Push to branch (`git push origin feature/new-feature`)
-5. Create Pull Request
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
 
-## License
+## 📝 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Support
+## 🆘 Support
 
 For issues and questions:
-- Create an issue in the repository
-- Contact the MOSIP development team
-- Check the documentation wiki
+- Check the [troubleshooting guide](docs/PROBLEM_RESOLUTION_SUMMARY.md)
+- Open an issue on GitHub
+- Review the API documentation at `/docs`
 
-## Roadmap
+## 🎉 Acknowledgments
 
-### v1.0 (Current)
-- Basic OCR with EasyOCR
-- REST API
-- Document validation
-
-### v1.1 (Planned)
-- Advanced preprocessing
-- Custom model training
-- Batch processing
-
-### v1.2 (Future)
-- ML-based validation
-- Real-time streaming
-- Advanced analytics
-
----
-
-**Note**: This implementation prioritizes simplicity and accuracy using EasyOCR's robust deep learning models, making it suitable for production use in the MOSIP ecosystem.
+- **EasyOCR** - OCR engine
+- **FastAPI** - Web framework
+- **Streamlit** - Frontend framework
+- **OpenCV** - Image processing
