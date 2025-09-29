@@ -1,0 +1,216 @@
+# MOSIP OCR Configuration File
+
+# OCR Engine Settings
+ocr:
+  # Supported languages (language codes for EasyOCR)
+  languages: 
+    - 'en'    # English
+    - 'hi'    # Hindi
+    - 'ta'    # Tamil
+    - 'te'    # Telugu
+    - 'kn'    # Kannada
+    - 'ml'    # Malayalam
+    - 'gu'    # Gujarati
+    - 'pa'    # Punjabi
+    - 'bn'    # Bengali
+    - 'or'    # Odia
+    - 'as'    # Assamese
+  
+  # Confidence threshold for accepting OCR results (0.0 to 1.0)
+  confidence_threshold: 0.8
+  
+  # Enable GPU acceleration (requires CUDA)
+  gpu_enabled: false
+  
+  # Directory to store EasyOCR models (null for default)
+  model_storage_directory: null
+
+# Image Preprocessing Settings
+preprocessing:
+  # Enhance image contrast using CLAHE
+  enhance_contrast: true
+  
+  # Apply denoising to reduce image noise
+  denoise: true
+  
+  # Resize factor for image scaling (>1 for upscaling, <1 for downscaling)
+  resize_factor: 2.0
+  
+  # Auto-correct image rotation
+  auto_rotate: true
+
+# Text Validation Settings
+validation:
+  # Minimum acceptable text length
+  min_text_length: 2
+  
+  # Maximum acceptable text length
+  max_text_length: 1000
+  
+  # Allowed characters in extracted text
+  allowed_chars: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 -.,/()[]{}:;\"'!@#$%^&*+=_|\\~`?"
+
+# API Configuration
+api:
+  # Server host address
+  host: "0.0.0.0"
+  
+  # Server port number
+  port: 8000
+  
+  # Maximum file size for uploads (in bytes) - 10MB
+  max_file_size: 10485760
+  
+  # Allowed file extensions for image uploads
+  allowed_extensions:
+    - ".jpg"
+    - ".jpeg"
+    - ".png"
+    - ".tiff"
+    - ".tif"
+    - ".bmp"
+    - ".pdf"
+  
+  # Request timeout in seconds
+  request_timeout: 30
+  
+  # CORS settings
+  cors:
+    allow_origins:
+      - "http://localhost:3000"
+      - "http://localhost:8080"
+    allow_methods:
+      - "GET"
+      - "POST"
+      - "PUT"
+      - "DELETE"
+    allow_headers:
+      - "Content-Type"
+      - "Authorization"
+
+# Logging Configuration
+logging:
+  # Logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+  level: "INFO"
+  
+  # Log format string
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(funcName)s:%(lineno)d - %(message)s"
+  
+  # Log file path (relative to project root)
+  file_path: "logs/ocr.log"
+  
+  # Maximum log file size in bytes (10MB)
+  max_file_size: 10485760
+  
+  # Number of backup log files to keep
+  backup_count: 5
+
+# Document Type Specific Settings
+document_types:
+  aadhaar:
+    # Aadhaar card specific validation rules
+    required_fields:
+      - "aadhaar_number"
+      - "name"
+      - "date_of_birth"
+      - "gender"
+    
+    # Field validation patterns
+    patterns:
+      aadhaar_number: "\\b\\d{4}\\s*\\d{4}\\s*\\d{4}\\b"
+      date_of_birth: "\\b\\d{1,2}[/-]\\d{1,2}[/-]\\d{4}\\b"
+      gender: "\\b(Male|Female|male|female|MALE|FEMALE|M|F|m|f)\\b"
+  
+  pan:
+    # PAN card specific validation rules
+    required_fields:
+      - "pan_number"
+      - "name"
+      - "father_name"
+      - "date_of_birth"
+    
+    patterns:
+      pan_number: "\\b[A-Z]{5}\\d{4}[A-Z]{1}\\b"
+      date_of_birth: "\\b\\d{1,2}[/-]\\d{1,2}[/-]\\d{4}\\b"
+  
+  passport:
+    # Passport specific validation rules
+    required_fields:
+      - "passport_number"
+      - "name"
+      - "date_of_birth"
+      - "nationality"
+    
+    patterns:
+      passport_number: "\\b[A-Z]\\d{7}\\b"
+      date_of_birth: "\\b\\d{1,2}[/-]\\d{1,2}[/-]\\d{4}\\b"
+      nationality: "\\b(INDIAN|Indian|IND)\\b"
+
+# Performance Settings
+performance:
+  # Maximum number of concurrent OCR processes
+  max_workers: 4
+  
+  # Timeout for individual OCR operations (seconds)
+  ocr_timeout: 30
+  
+  # Memory limit for image processing (MB)
+  max_memory_usage: 512
+  
+  # Cache settings for processed results
+  cache:
+    enabled: true
+    max_size: 1000
+    ttl_seconds: 3600  # 1 hour
+
+# Security Settings
+security:
+  # Enable input file validation
+  validate_uploads: true
+  
+  # Maximum number of API requests per minute per IP
+  rate_limit: 60
+  
+  # Enable API key authentication
+  require_api_key: false
+  
+  # API key header name
+  api_key_header: "X-API-Key"
+  
+  # Allowed file MIME types
+  allowed_mime_types:
+    - "image/jpeg"
+    - "image/png"
+    - "image/tiff"
+    - "image/bmp"
+    - "application/pdf"
+
+# Monitoring Settings
+monitoring:
+  # Enable performance metrics collection
+  enable_metrics: true
+  
+  # Metrics export format (prometheus, json)
+  metrics_format: "json"
+  
+  # Health check endpoint settings
+  health_check:
+    enabled: true
+    endpoint: "/health"
+    check_ocr_engine: true
+    check_disk_space: true
+    check_memory_usage: true
+
+# Development Settings
+development:
+  # Enable debug mode
+  debug: false
+  
+  # Auto-reload on code changes
+  auto_reload: false
+  
+  # Enable detailed error responses
+  detailed_errors: false
+  
+  # Sample images directory for testing
+  sample_images_dir: "sample_images"
