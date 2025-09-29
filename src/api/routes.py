@@ -98,27 +98,27 @@ async def extract_text(
             text_blocks = []
             for result in results:
                 text_blocks.append({
-                    "text": result.text,
-                    "confidence": result.confidence,
-                    "bbox": result.bbox,
-                    "language": result.language
+                    "text": str(result.text),
+                    "confidence": float(result.confidence),
+                    "bbox": [[int(x) for x in point] for point in result.bbox],
+                    "language": str(result.language) if result.language else None
                 })
             
             processing_time = time.time() - start_time
             
             response = {
                 "status": "success",
-                "processing_time": round(processing_time, 3),
-                "text_blocks_found": len(text_blocks),
+                "processing_time": round(float(processing_time), 3),
+                "text_blocks_found": int(len(text_blocks)),
                 "text_blocks": text_blocks,
-                "combined_text": " ".join([block["text"] for block in text_blocks]),
+                "combined_text": str(" ".join([block["text"] for block in text_blocks])),
                 "average_confidence": round(
-                    sum(block["confidence"] for block in text_blocks) / len(text_blocks) if text_blocks else 0, 3
+                    float(sum(block["confidence"] for block in text_blocks) / len(text_blocks)) if text_blocks else 0.0, 3
                 ),
                 "parameters": {
-                    "confidence_threshold": confidence_threshold,
-                    "preprocess": preprocess,
-                    "languages": languages.split(",")
+                    "confidence_threshold": float(confidence_threshold),
+                    "preprocess": bool(preprocess),
+                    "languages": str(languages).split(",")
                 }
             }
             
@@ -219,20 +219,20 @@ async def process_document(
             
             for result in ocr_results:
                 block_data = {
-                    "text": result.text,
-                    "confidence": result.confidence,
-                    "bbox": result.bbox,
-                    "language": result.language
+                    "text": str(result.text),
+                    "confidence": float(result.confidence),
+                    "bbox": [[int(x) for x in point] for point in result.bbox],
+                    "language": str(result.language) if result.language else None
                 }
                 
                 # Add validation if enabled
                 if validator:
                     validation = validator.validate_text(result.text)
                     block_data["validation"] = {
-                        "is_valid": validation["valid"],
-                        "message": validation["message"],
-                        "rules_passed": validation["rules_passed"],
-                        "rules_failed": validation["rules_failed"]
+                        "is_valid": bool(validation["valid"]),
+                        "message": str(validation["message"]),
+                        "rules_passed": int(validation["rules_passed"]),
+                        "rules_failed": int(validation["rules_failed"])
                     }
                 
                 processed_blocks.append(block_data)
@@ -243,21 +243,21 @@ async def process_document(
             
             response = {
                 "status": "success",
-                "processing_time": round(processing_time, 3),
-                "document_type": document_type,
+                "processing_time": round(float(processing_time), 3),
+                "document_type": str(document_type) if document_type else None,
                 "summary": {
-                    "total_blocks": len(processed_blocks),
-                    "valid_blocks": len(valid_blocks),
+                    "total_blocks": int(len(processed_blocks)),
+                    "valid_blocks": int(len(valid_blocks)),
                     "average_confidence": round(
-                        sum(b["confidence"] for b in processed_blocks) / len(processed_blocks) if processed_blocks else 0, 3
+                        float(sum(b["confidence"] for b in processed_blocks) / len(processed_blocks)) if processed_blocks else 0.0, 3
                     ),
-                    "combined_text": " ".join([b["text"] for b in valid_blocks])
+                    "combined_text": str(" ".join([b["text"] for b in valid_blocks]))
                 },
                 "text_blocks": processed_blocks,
                 "parameters": {
-                    "confidence_threshold": confidence_threshold,
-                    "validate_fields": validate_fields,
-                    "document_type": document_type
+                    "confidence_threshold": float(confidence_threshold),
+                    "validate_fields": bool(validate_fields),
+                    "document_type": str(document_type) if document_type else None
                 }
             }
             

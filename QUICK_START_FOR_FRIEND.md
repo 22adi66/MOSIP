@@ -1,6 +1,16 @@
-# 🚀 MOSIP OCR API - Quick Setup for Streamlit
+# 🚀 MOSIP OCR API - Quick Setup for S## ✅ **Working Endpoints (ALL TESTED & VERIFIED):**
 
-## 📞 **For Your Friend:**
+1. **📊 GET /api/v1/health** - Returns: `{"status":"healthy","timestamp":"2025-09-29T..."}`
+2. **🌍 GET /api/v1/languages** - Returns: 12 supported languages including Hindi, Tamil, Telugu
+3. **✅ POST /api/v1/ocr/validate** - Text validation works perfectly
+4. **🔍 POST /api/v1/ocr/extract** - OCR extraction works perfectly (Found 4 text blocks in 0.2s)
+5. **📄 POST /api/v1/document/process** - Complete document processing works perfectly! ✨
+
+## 🎉 **All Issues Fixed!**
+- ✅ JSON serialization issue resolved (numpy types converted to Python types)
+- ✅ File upload content-type specification working
+- ✅ All endpoints tested and confirmed working
+- ✅ Server stable and running## 📞 **For Your Friend:**
 
 ### 🌐 **Public API URL (Ready to Use!)**
 ```
