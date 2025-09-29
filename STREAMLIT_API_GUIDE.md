@@ -1,10 +1,12 @@
 # 🚀 MOSIP OCR API - Streamlit Integration Guide
 
 ## 📋 API Base Information
-- **Base URL**: `http://localhost:8000`
-- **API Documentation**: `http://localhost:8000/api/docs`
+- **Base URL**: `https://deandra-creamiest-unpenetratingly.ngrok-free.dev`
+- **API Documentation**: `https://deandra-creamiest-unpenetratingly.ngrok-free.dev/api/docs`
 - **API Version**: v1
 - **Format**: JSON
+- **Public Access**: Available worldwide via ngrok tunnel
+- **⚠️ Important**: First-time visitors may see an ngrok warning page - click "Visit Site" to proceed
 
 ---
 
@@ -51,6 +53,9 @@ Content-Type: multipart/form-data
 import streamlit as st
 import requests
 
+# Note: Add ngrok-skip-browser-warning header for API calls
+headers = {"ngrok-skip-browser-warning": "true"}
+
 # File uploader
 uploaded_file = st.file_uploader("Upload Document Image", type=['jpg', 'jpeg', 'png', 'tiff'])
 
@@ -70,11 +75,12 @@ if uploaded_file:
             "languages": ",".join(languages)
         }
         
-        # Make API call
+        # Make API call with ngrok header
         response = requests.post(
-            "http://localhost:8000/api/v1/ocr/extract",
+            "https://deandra-creamiest-unpenetratingly.ngrok-free.dev/api/v1/ocr/extract",
             files={"file": uploaded_file},
-            data=data
+            data=data,
+            headers=headers
         )
         
         if response.status_code == 200:
@@ -157,7 +163,7 @@ if st.button("Validate Text") and text_to_validate:
     }
     
     response = requests.post(
-        "http://localhost:8000/api/v1/ocr/validate",
+        "https://deandra-creamiest-unpenetratingly.ngrok-free.dev/api/v1/ocr/validate",
         json=payload
     )
     
@@ -254,7 +260,7 @@ if uploaded_file:
         }
         
         response = requests.post(
-            "http://localhost:8000/api/v1/document/process",
+            "https://deandra-creamiest-unpenetratingly.ngrok-free.dev/api/v1/document/process",
             files=files,
             data=data
         )
@@ -309,7 +315,7 @@ import streamlit as st
 import requests
 
 if st.button("Get Supported Languages"):
-    response = requests.get("http://localhost:8000/api/v1/languages")
+    response = requests.get("https://deandra-creamiest-unpenetratingly.ngrok-free.dev/api/v1/languages")
     
     if response.status_code == 200:
         result = response.json()
@@ -363,7 +369,7 @@ st.title("📄 MOSIP OCR - Text Extraction & Verification")
 st.markdown("Upload document images to extract and validate text content")
 
 # API Base URL
-API_BASE = "http://localhost:8000"
+API_BASE = "https://deandra-creamiest-unpenetratingly.ngrok-free.dev"
 
 # Sidebar for configuration
 st.sidebar.header("⚙️ Configuration")
@@ -548,11 +554,11 @@ uvicorn src.api.main:app --host 0.0.0.0 --port 8000
 
 **2. Test API:**
 ```bash
-curl http://localhost:8000/health
+curl https://deandra-creamiest-unpenetratingly.ngrok-free.dev/health
 ```
 
 **3. View API Docs:**
-Open: `http://localhost:8000/api/docs`
+Open: `https://deandra-creamiest-unpenetratingly.ngrok-free.dev/api/docs`
 
 ---
 
